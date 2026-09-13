@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal profile page for a designer, developer, and maker.">
+  <title>Your Name Profile</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f2ec;
+      --ink: #111111;
+      --graphite: #5f5a52;
+      --rule: #d9d2c7;
+      --signal: #c85f2d;
+      --page: clamp(1rem, 2vw, 1.75rem);
+      --section: clamp(2.5rem, 7vw, 6rem);
+      --display: clamp(4.25rem, 13vw, 11rem);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--paper);
+      color: var(--ink);
+      scrollbar-color: var(--graphite) var(--paper);
+      scrollbar-width: thin;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px) 0 0 / 25vw 100%,
+        var(--paper);
+      color: var(--ink);
+    }
+
+    body::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    body::-webkit-scrollbar-track {
+      background: var(--paper);
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background: var(--graphite);
+      border: 2px solid var(--paper);
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+      transition: color 160ms ease, text-decoration-thickness 160ms ease;
+    }
+
+    a:hover {
+      color: var(--signal);
+      text-decoration-thickness: 2px;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 4px;
+    }
+
+    .page {
+      width: min(100%, 1440px);
+      margin: 0 auto;
+      padding: 0 var(--page) var(--page);
+    }
+
+    .site-header {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 52px;
+      border-bottom: 1px solid var(--ink);
+      font-size: 0.72rem;
+      line-height: 1;
+    }
+
+    .brand {
+      font-weight: 700;
+    }
+
+    .nav-list,
+    .social-list {
+      display: flex;
+      gap: clamp(0.7rem, 2vw, 1.15rem);
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-list {
+      justify-content: center;
+    }
+
+    .social-list {
+      justify-content: flex-end;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.9fr) minmax(360px, 1.1fr);
+      gap: clamp(2rem, 7vw, 8rem);
+      align-items: center;
+      min-height: clamp(620px, 88svh, 760px);
+      padding: var(--section) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .photo-stack {
+      position: relative;
+      width: min(100%, 430px);
+      aspect-ratio: 0.88;
+      margin: 0 auto;
+    }
+
+    .photo-card {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(17, 17, 17, 0.12);
+      background: #ffffff;
+      transform-origin: 50% 90%;
+    }
+
+    .photo-card::after {
+      position: absolute;
+      right: 0.7rem;
+      bottom: 0.7rem;
+      left: 0.7rem;
+      height: 2.25rem;
+      border-top: 1px solid rgba(17, 17, 17, 0.16);
+      color: var(--graphite);
+      content: attr(data-caption);
+      font-size: 0.66rem;
+      line-height: 2.25rem;
+      text-align: center;
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      height: calc(100% - 3.5rem);
+      object-fit: cover;
+      padding: 0.7rem;
+      filter: saturate(0.88) contrast(1.04);
+    }
+
+    .photo-card:nth-child(1) {
+      z-index: 3;
+      transform: rotate(-4deg) translate(-3%, 1%);
+    }
+
+    .photo-card:nth-child(2) {
+      z-index: 2;
+      transform: rotate(5deg) translate(8%, -4%);
+    }
+
+    .photo-card:nth-child(3) {
+      z-index: 1;
+      transform: rotate(-10deg) translate(-9%, -7%);
+    }
+
+    .hero-copy {
+      justify-self: end;
+      max-width: 710px;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--graphite);
+      font-size: 0.75rem;
+      line-height: 1.2;
+    }
+
+    h1 {
+      max-width: 8ch;
+      margin: 0;
+      font-size: var(--display);
+      font-weight: 400;
+      line-height: 0.86;
+      letter-spacing: 0;
+    }
+
+    .years {
+      display: block;
+      margin-top: 0.35rem;
+      font-size: clamp(1.2rem, 3vw, 2.4rem);
+      line-height: 0.95;
+    }
+
+    .hero-note {
+      max-width: 28rem;
+      margin: 1.5rem 0 0;
+      font-size: clamp(1rem, 1.7vw, 1.35rem);
+      line-height: 1.18;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.92fr) minmax(240px, 0.48fr);
+      gap: clamp(2rem, 9vw, 9rem);
+      padding: var(--section) 0;
+    }
+
+    .bio {
+      max-width: 670px;
+    }
+
+    .bio p {
+      margin: 0 0 1.1rem;
+      font-size: clamp(1.15rem, 2.05vw, 1.78rem);
+      line-height: 1.08;
+    }
+
+    .facts {
+      display: grid;
+      gap: 1.35rem;
+      align-content: start;
+      font-size: 0.72rem;
+      line-height: 1.25;
+    }
+
+    .fact {
+      display: grid;
+      gap: 0.4rem;
+      padding-top: 0.65rem;
+      border-top: 1px solid var(--ink);
+    }
+
+    .fact h2 {
+      margin: 0;
+      color: var(--graphite);
+      font-size: 0.72rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .fact p,
+    .fact ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .fact ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.2rem 1rem;
+      list-style: none;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--ink);
+      color: var(--graphite);
+      font-size: 0.72rem;
+      line-height: 1.25;
+    }
+
+    @media (max-width: 820px) {
+      body {
+        background: var(--paper);
+      }
+
+      .site-header {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+        align-items: start;
+        padding: 0.95rem 0;
+      }
+
+      .nav-list,
+      .social-list {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero,
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        gap: 2.25rem;
+      }
+
+      .hero-copy {
+        justify-self: start;
+        order: -1;
+      }
+
+      h1 {
+        max-width: 7ch;
+      }
+
+      .photo-stack {
+        width: min(82vw, 360px);
+        margin-left: 5vw;
+      }
+
+      .bio p {
+        line-height: 1.12;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto;
+        transition-duration: 0.01ms;
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header" aria-label="Primary">
+      <div class="brand">Your Name</div>
+      <nav aria-label="Profile sections">
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="mailto:hello@example.com">Email</a></li>
+        </ul>
+      </nav>
+      <ul class="social-list" aria-label="Social links">
+        <li><a href="https://github.com/" aria-label="GitHub profile">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" aria-label="LinkedIn profile">LinkedIn</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="photo-stack" aria-label="Layered personal photographs">
+          <figure class="photo-card" data-caption="Seoul / Studio note">
+            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80" alt="A bright creative studio workspace with desks and plants">
+          </figure>
+          <figure class="photo-card" data-caption="Field capture">
+            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80" alt="Architectural detail with geometric shapes and a clear sky">
+          </figure>
+          <figure class="photo-card" data-caption="Archive print">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="A calm outdoor scene with a person facing a landscape">
+          </figure>
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow">Currently building useful things between design and code.</p>
+          <h1 id="hero-title">Designer<span class="years">00' - Present</span></h1>
+          <p class="hero-note">A compact personal page for work, experiments, contact, and the small details that make a project feel considered.</p>
+        </div>
+      </section>
+
+      <section class="profile-grid" id="about" aria-label="Profile details">
+        <div class="bio">
+          <p>I work across product thinking, interface design, and front-end implementation. I like pages that feel simple because the decisions underneath them are precise.</p>
+          <p>This profile is intentionally direct: a few strong images, a large professional signal, and a short record of what I care about making.</p>
+          <p id="work">Selected work can live here as the page grows: product launches, UI experiments, essays, open-source projects, or anything else worth keeping close.</p>
+        </div>
+
+        <aside class="facts" aria-label="Profile facts">
+          <section class="fact">
+            <h2>Currently</h2>
+            <p>Independent maker<br>Available for selected collaborations</p>
+          </section>
+          <section class="fact">
+            <h2>Focus</h2>
+            <ul>
+              <li>Product</li>
+              <li>Interface</li>
+              <li>Frontend</li>
+              <li>Systems</li>
+              <li>Writing</li>
+              <li>Prototypes</li>
+            </ul>
+          </section>
+          <section class="fact">
+            <h2>Location</h2>
+            <p>Seoul, Korea<br>37.5665 N / 126.9780 E</p>
+          </section>
+          <section class="fact">
+            <h2>Contact</h2>
+            <p><a href="mailto:hello@example.com">hello@example.com</a><br><a href="https://github.com/">github.com/yourname</a></p>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Profile page / 2026</span>
+      <span>Built as a small editorial index.</span>
+    </footer>
+  </div>
+</body>
+</html>

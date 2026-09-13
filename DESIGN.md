@@ -44,7 +44,7 @@ components:
 
 ## Overview
 
-This is a single-page personal profile site in a brand/content register. The visual north star is Samuel Medvedowsky's portfolio page: quiet white space, a thin navigation row, a large profession statement, and a layered photo stack that makes the hero feel personal without becoming a conventional resume.
+This is a single-page personal profile site in a brand/content register for 박채경, a makeup design researcher, artist, and lecturer. The visual north star is Samuel Medvedowsky's portfolio page: quiet white space, a thin navigation row, a large profession statement, and a layered photo stack that makes the hero feel personal without becoming a conventional resume.
 
 The page should feel like an editorial index for a maker: direct, typographic, compact, and specific. It should avoid generic glass cards, oversized marketing gradients, rounded SaaS panels, and decorative blobs.
 
@@ -74,4 +74,4 @@ Navigation is compact and anchored to the top rule. The contact links are real a
 
 ## Do's and Don'ts
 
-Do keep the page spare, typographic, and image-led. Do preserve strong contrast and semantic HTML. Don't add card grids, gradient orbs, animated gimmicks, or fake links.
+Do keep the page spare, typographic, and image-led. Do let makeup research, color analysis, exhibition work, and university teaching supply the content structure. Do preserve strong contrast and semantic HTML. Don't add card grids, gradient orbs, animated gimmicks, or fake links.

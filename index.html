@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal profile page for a designer, developer, and maker.">
-  <title>Your Name Profile</title>
+  <meta name="description" content="박채경 메이크업 디자인 연구자, 아티스트, 강의교수 프로필.">
+  <title>박채경 Profile</title>
   <style>
     :root {
       color-scheme: light;
@@ -176,6 +176,13 @@
       max-width: 710px;
     }
 
+    .roman-name {
+      margin: 0 0 0.45rem;
+      color: var(--graphite);
+      font-size: 0.82rem;
+      line-height: 1.1;
+    }
+
     .eyebrow {
       margin: 0 0 1rem;
       color: var(--graphite);
@@ -259,6 +266,34 @@
       list-style: none;
     }
 
+    .timeline {
+      display: grid;
+      grid-template-columns: 8rem minmax(0, 1fr);
+      gap: 0.8rem 1.2rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.86rem;
+      line-height: 1.28;
+    }
+
+    .timeline dt {
+      color: var(--graphite);
+    }
+
+    .timeline dd {
+      margin: 0;
+    }
+
+    .section-title {
+      margin: 0 0 1rem;
+      color: var(--graphite);
+      font-size: 0.72rem;
+      font-weight: 400;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
     .footer {
       display: flex;
       justify-content: space-between;
@@ -316,6 +351,10 @@
         line-height: 1.12;
       }
 
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
       .footer {
         flex-direction: column;
       }
@@ -336,79 +375,99 @@
 <body>
   <div class="page">
     <header class="site-header" aria-label="Primary">
-      <div class="brand">Your Name</div>
+      <div class="brand">박채경</div>
       <nav aria-label="Profile sections">
         <ul class="nav-list">
           <li><a href="#about">About</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="mailto:hello@example.com">Email</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#work">Works</a></li>
+          <li><a href="mailto:corud10130@skuniv.ac.kr">Email</a></li>
         </ul>
       </nav>
       <ul class="social-list" aria-label="Social links">
-        <li><a href="https://github.com/" aria-label="GitHub profile">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/" aria-label="LinkedIn profile">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/atelier.c_portfolio/" aria-label="Instagram portfolio">Instagram</a></li>
+        <li><a href="mailto:corud10130@skuniv.ac.kr" aria-label="Email Park Chaegyeong">Contact</a></li>
       </ul>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
-        <div class="photo-stack" aria-label="Layered personal photographs">
-          <figure class="photo-card" data-caption="Seoul / Studio note">
-            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80" alt="A bright creative studio workspace with desks and plants">
+        <div class="photo-stack" aria-label="Layered makeup and studio images">
+          <figure class="photo-card" data-caption="Makeup studio / Seoul">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80" alt="Makeup brushes arranged in a professional studio">
           </figure>
-          <figure class="photo-card" data-caption="Field capture">
-            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80" alt="Architectural detail with geometric shapes and a clear sky">
+          <figure class="photo-card" data-caption="Color study">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80" alt="Cosmetic color palettes and makeup products">
           </figure>
-          <figure class="photo-card" data-caption="Archive print">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="A calm outdoor scene with a person facing a landscape">
+          <figure class="photo-card" data-caption="Exhibition trace">
+            <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80" alt="Softly lit exhibition-like wall and shadow composition">
           </figure>
         </div>
 
         <div class="hero-copy">
-          <p class="eyebrow">Currently building useful things between design and code.</p>
-          <h1 id="hero-title">Designer<span class="years">00' - Present</span></h1>
-          <p class="hero-note">A compact personal page for work, experiments, contact, and the small details that make a project feel considered.</p>
+          <p class="roman-name">PARK CHAEGYEONG</p>
+          <p class="eyebrow">서경대학교 글로벌메이크업디자인학과 강의교수 · 메이크업 스튜디오 실장</p>
+          <h1 id="hero-title">Makeup Artist<span class="years">22' - Present</span></h1>
+          <p class="hero-note">메이크업 디자인 연구자 · 아티스트 · 강의교수. 버추얼 휴먼 캐릭터 메이크업과 컬렉션 색채 분석을 연구하고, 강의실과 전시장에서 실제 얼굴 위에 옮긴다.</p>
         </div>
       </section>
 
       <section class="profile-grid" id="about" aria-label="Profile details">
         <div class="bio">
-          <p>I work across product thinking, interface design, and front-end implementation. I like pages that feel simple because the decisions underneath them are precise.</p>
-          <p>This profile is intentionally direct: a few strong images, a large professional signal, and a short record of what I care about making.</p>
-          <p id="work">Selected work can live here as the page grows: product launches, UI experiments, essays, open-source projects, or anything else worth keeping close.</p>
+          <h2 class="section-title">About</h2>
+          <p>박채경은 서경대학교에서 메이크업 디자인을 가르치고, 메이크업 스튜디오를 운영하며, 대학원 미용예술학과 박사과정에서 연구를 이어가고 있다.</p>
+          <p id="research">연구는 버추얼 휴먼을 활용한 캐릭터 메이크업 디자인, 파리 컬렉션 런웨이 메이크업의 색채 표현, 화장품 광고 AI 생성 이미지의 선호도와 신뢰도 격차에 놓여 있다.</p>
+          <p id="work">작품은 레이스를 입술 위에 직접 올려 찍어내는 스텐실 기법의 <strong>언레이스 Un-Lace</strong>, 이미지 연작 <strong>Entwined Blessing</strong>, 사진 작업 <strong>풀어내다 Release</strong>, 진행 중인 전시 작업 <strong>풀리다 Un-Tied</strong>로 이어진다.</p>
+
+          <dl class="timeline" aria-label="Education and career timeline">
+            <dt>2025 - 현재</dt>
+            <dd>서경대학교 대학원 미용예술학과 메이크업디자인 전공 박사과정 재학</dd>
+            <dt>2024 - 현재</dt>
+            <dd>서경대학교 글로벌메이크업디자인학과 강의교수</dd>
+            <dt>2024</dt>
+            <dd>서경대학교 대학원 미용예술학과 메이크업디자인 전공 석사</dd>
+            <dt>2022 - 현재</dt>
+            <dd>서경대학교 메이크업 스튜디오 실장 및 개인 메이크업 스튜디오 운영</dd>
+            <dt>2022</dt>
+            <dd>서경대학교 헤어·메이크업디자인학과 학사</dd>
+          </dl>
         </div>
 
         <aside class="facts" aria-label="Profile facts">
           <section class="fact">
             <h2>Currently</h2>
-            <p>Independent maker<br>Available for selected collaborations</p>
+            <p>서경대학교 글로벌메이크업디자인학과 강의교수<br>서경대학교 메이크업 스튜디오 실장<br>박사과정 원우회장</p>
           </section>
           <section class="fact">
             <h2>Focus</h2>
             <ul>
-              <li>Product</li>
-              <li>Interface</li>
-              <li>Frontend</li>
-              <li>Systems</li>
-              <li>Writing</li>
-              <li>Prototypes</li>
+              <li>버추얼 휴먼</li>
+              <li>캐릭터 메이크업</li>
+              <li>컬렉션 색채 분석</li>
+              <li>아트 메이크업</li>
+              <li>퍼스널컬러</li>
+              <li>메이크업 교육</li>
             </ul>
           </section>
           <section class="fact">
-            <h2>Location</h2>
-            <p>Seoul, Korea<br>37.5665 N / 126.9780 E</p>
+            <h2>Research</h2>
+            <p>「버추얼 휴먼을 활용한 프린세스 캐릭터 메이크업 디자인」<br>「2023년 F/W 파리 컬렉션에 나타난 메이크업 색채 표현 분석」</p>
+          </section>
+          <section class="fact">
+            <h2>Teaching</h2>
+            <p>Basic Makeup · Advanced Makeup · Fashion Makeup<br>퍼스널컬러 특강 · 헤어 업스타일링 실기 지도</p>
           </section>
           <section class="fact">
             <h2>Contact</h2>
-            <p><a href="mailto:hello@example.com">hello@example.com</a><br><a href="https://github.com/">github.com/yourname</a></p>
+            <p><a href="mailto:corud10130@skuniv.ac.kr">corud10130@skuniv.ac.kr</a><br><a href="https://www.instagram.com/atelier.c_portfolio/">@atelier.c_portfolio</a><br>서경대학교 유담관 5층</p>
           </section>
         </aside>
       </section>
     </main>
 
     <footer class="footer">
-      <span>Profile page / 2026</span>
-      <span>Built as a small editorial index.</span>
+      <span>박채경 Profile / 2026</span>
+      <span>최종 수정 2026년 9월</span>
     </footer>
   </div>
 </body>
